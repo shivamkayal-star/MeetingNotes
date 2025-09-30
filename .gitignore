@@ -1,0 +1,24 @@
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# --- Virtual env (do NOT commit) ---
+.venv/
+
+# --- Secrets (do NOT commit) ---
+.env
+.streamlit/secrets.toml
+
+# --- Runtime data (keep this out of git) ---
+repository/
+logs/
+uploads/
+*.log
+
+# --- Local/editor/OS cruft ---
+.vscode/
+.DS_Store
+Thumbs.db
