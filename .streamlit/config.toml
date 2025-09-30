@@ -1,0 +1,6 @@
+[theme]
+base="light"
+primaryColor="#ef4444"  # red-500 for buttons
+backgroundColor="#ffffff"
+secondaryBackgroundColor="#f9fafb"
+textColor="#111827"
