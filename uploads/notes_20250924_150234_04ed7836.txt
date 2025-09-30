@@ -1,0 +1,22 @@
+Call Notes w/ Sam | 08/19
+Hi team,
+ 
+Please find below the notes from Sam’s call:
+ 
+MSCI tool>
+Sam aligned with BCN's assessment that it is unclear if Bain is receiving sufficient incremental value to justify additional costs from MSC
+Action: Thank MSCI, tell them to stay in touch, but no additional commitment at this stage
+Monitor developments from other providers. Renoster is planning a public release soon. Patch is exploring API-related capabilities.
+Carbon Pulse and Quantum Carbon Daily continue to push daily news platforms
+Offset Tracker Dashboard>
+Idea: Explore integration with Silvera or BZero for automated data feeds
+Keep Offset Tracker internal for now, but continue monitoring opportunities for automation
+Carbon Budget Dashboard>
+Sam to send out the email notification about the new Carbon Budget Dashboard link. BCN to share OFT with him.
+Email should have: Bain-level update on progress toward targets (“tracking forward, good progress”); Guidance on usage: encourage teams to factor carbon implications into financial planning and travel/meeting decisions
+The new link to the dashboard
+Keep similar to last year’s update
+Tracera Pilot>
+Sam aligned with the overall plan
+Suggested to have 3 CDMs for the pilot
+ 

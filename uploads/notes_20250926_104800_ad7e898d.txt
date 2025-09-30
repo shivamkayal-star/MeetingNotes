@@ -1,0 +1,42 @@
+Call Notes | 06/23
+Hi Estabrook, Ben,
+ 
+Please find below the notes from today's call (06/23):
+ 
+Offsets > https://bainandcompany.sharepoint.com/:p:/s/Global_Sustainability_At_Bain_Teams/EfKpiW-XRqpHpwtgSa7pj8IB5uOEFU385a0QLd9Cgh6WsA?e=7J9gtD
+Ben to ask CIP the following questions:
+Vintage and pricing for the offered projects
+For the Panna Afforestation and Reforestation Project:
+To get clarity on the revenue streams associated with this project, since we have concerns regarding the viability and reliability of agroforestry projects and their respective credits generated
+The expected timelines for the validation and verification reports, as well as the issuance of carbon credits
+To confirm whether they are offering spot credits or if it is limited to offtake agreements for this project
+Microsoft bought project has a good stamp of quality but concerns regarding:
+Agroforestry projects - Concerns around additionality
+Leakage assumptions
+Barely generating any credits per year
+Decisions regarding projects:
+Panna Afforestation and Reforestation Project: Decision will be made based on the responses received from CIP
+Ben agrees with rejecting the remaining 3 projects:
+Hongera Reforestation Project: Generating minimal credits
+Greenzone Reforestation Project: Generating minimal credits
+Manglares Ursulo Galvan Project: Mexico Mangroves; weak additionality; previously rejected
+ 
+SBTi Near Term Target Setting > https://bainandcompany.sharepoint.com/:p:/s/Global_Sustainability_At_Bain_Teams/EZYz1ncYwFxGuJCnYRlf9SgB50--M-binG94EL1Ff1AIvQ?e=8i1CvO
+Scope 1&2:
+No more scenarios needed
+Sensible option would be to stick to our Minimum % or McKinsey Target
+Scope 3:
+Only Air travel volume reduction is in our hands
+EoVs - Our methodology has to account for change in EoV landscape
+If we do encourage people to buy EVs - we need to account for this in our methodology
+The levers that Bain has control over:
+Travel less
+Buy SAF - huge lever
+Hired Cars/ Uber and Lyft
+For Sam: Slide 13 - 20 to be presented tomorrow (06/24)
+3 options - 3 columns
+1st scenario (minimum scenario) - Scope 1&2 min, Scope 3 min, reasons (Answer First - Recommended)
+2nd scenario - Minimum Scope 1–2, more aggressive Scope 3
+Assess SAF costs and practicality
+3rd scenario - beyond the minimum of scope 1&2 and scope 3 (most aggressive scenario)
+Our answer first: minimum % target with proper initiatives in place

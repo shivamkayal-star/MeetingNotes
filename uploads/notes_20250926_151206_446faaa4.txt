@@ -1,0 +1,34 @@
+Call Notes | 05/28
+Hi Estabrook, Ben
+ 
+Hope you are doing well!
+ 
+Please find below the notes from today's call:
+ 
+Post Carbon Assessment>
+[Input required] Attaching the OFT for the thankyou mail for Bain CDMs
+Subsidiaries:
+[Input required] Please review the thankyou mail draft - OFT attached
+ 
+GT Reporting Document >  https://bainandcompany.sharepoint.com/:w:/s/Global_Sustainability_At_Bain_Teams/ETxD0KilK8NGvb1t8VCH9bUBH6F-0OeAfW0tef8o-CfQiQ?e=XfTwiH
+To draft a final version of GT Reporting Document tomorrow (05/29)
+SAF Table:
+Added a note referencing the GRI table for full calculations
+Added a table including only SAF purchase for 2024
+ 
+SBTi Survey > https://bainandcompany.sharepoint.com/:x:/s/Global_Sustainability_At_Bain_Teams/EUC0t0ASSOtMpuFVA99ZL_cBnzatvs0tQYPHGTSuQS-SUQ?e=cFLtSt
+Separating Scope 1 and 2 targets can increase complexity and burden of managing multiple targets
+Recognition that scope 1 reduction will be harder without market based instruments like renewable natural gas certificates
+For reporting full scope 3 inventory we can report the rest of categories as zeroes as they do not apply to Bain
+We have added a response opposing separate scope 1&2 targets and physical intensity metric only for emission intensive activities
+Context for Scope 3 near term target setting:
+For emission intensive activities, targets were to be set separate, but since that is not applicable to us now anymore we will just have a collated target for scope 3 relevant emission sources
+'C16.1. Companies shall set near-term scope 3 targets that cover all relevant scope 3 emissions sources as defined in CNZS-C7. (NOTE: The SBTi is consulting on whether long-term scope 3 targets should be required in addition to near-term targets and the net-zero commitment in C1.3.) C16.2. Companies shall separate targets for emissions-intensive activities [representing X% or more of total scope 3]. (NOTE: The SBTi is consulting on whether activity-level targets on emissions-intensive activities should be mandatory and, if so, at what threshold.) C16.3. Companies may aggregate targets for remaining scope 3 emissions into a single target.'
+[Input required] Could you please provide feedback on the survey responses?
+ 
+EcoAct Portfolio Options > 
+To look into the selected projects as discussed on the call
+ 
+SBTi near-term target > https://sbtiservices.com/resources?tab=ts
+Aim at setting targets at least similar to McK and then see what else we can achieve
+Ben would like to discuss the kind of questions we have right now - to be updated based on the latest form by SBTi Services

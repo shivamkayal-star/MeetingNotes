@@ -1,0 +1,14 @@
+Call Notes w/Tracera I 08/13
+
+Hi Team,
+
+Please find below the notes from the call with Tracera (Alexa):
+
+Tracera Pilot>
+AI training is expected to be completed by the end of this week. Tracera will inform us once it is done.
+Sites from the pilot not originally in the system have now been added manually. Some fields, like street address and site area, are still missing. These can be added via platform (site-by-site) or added in Excel that Alexa can help upload in our next Connect
+One PDF should ideally have just one invoice
+AI currently does not extract data from waste invoices
+Waste invoice parsing is on the product roadmap
+AI can be configured to extract either Subtotal (utility only) or Total (including taxes). Bain to confirm preference, and Tracera will adjust AI accordingly
+AI does not parse RECs or certificates currently. Manual entry is supported at the site-level or region-level

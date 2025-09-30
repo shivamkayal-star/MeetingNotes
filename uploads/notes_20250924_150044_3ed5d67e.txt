@@ -1,0 +1,18 @@
+Call Notes w/ Elizabeth | 08/20
+Hi team,
+ 
+Please find below the notes from Elizabeth’s call:
+ 
+Amex API>
+Elizabeth informed about a meeting with the Amex Engineering Manager tomorrow to provide Amex with the information they need
+ 
+T&E and AP Data Transformations>
+Elizabeth to share documentation of prior examples of transformation logic after the meeting
+ 
+Resource Transition>
+Elizabeth informed that Tripti will be rolling off at the end of month. A new resource will be joining to support, but would lack the deep context that Tripti had.
+ 
+Polaris Architecture>
+Polaris is transitioning to a Medallion Architecture (considered the industry gold standard)
+Expected benefits: Stronger data governance, more structured and scalable pipelines, and greater standardization across teams
+ 

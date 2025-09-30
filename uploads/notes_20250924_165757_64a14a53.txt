@@ -1,0 +1,28 @@
+Call Notes w/Tracera I 07/30
+
+Hi Team,
+ 
+Please find below the notes from the call with Tracera (Alexa):
+Tracera Pilot>
+Platform walkthrough
+Customize and manage location data through the Add Site interface
+Deactivated meters and utility providers retain historical data; new ones can be added as needed
+Audit trail records all changes and sign-offs
+Auto-calculates emissions based on chosen emission factors
+Roles Overview:
+Auditor: Read-only access; Can download data but cannot edit or delete
+Module admin: Full platform permissions (edit, delete, assign roles, lock data)
+Data provider: Can upload and edit utility data only for assigned sites; Cannot add sites or users
+Data validator: All permissions of the data provider, plus the ability to review and sign off on the data
+Shivam added as Module Admin; team will assign additional users
+AI performance improves with more recent and complete data
+Current Excel upload requires use of a defined template, and a more flexible “ingestion wizard” is under development to support unstructured Excel files
+Multi-tenant site: Currently manually calculate and input their proportional share
+Future enhancement: Users will be able to assign a fixed allocation percentage per account number
+Emission Factors
+Emission factors visible under Resources – References
+Users can view: Factors by site, utility type, region; GWP assumptions and CO2 conversion logic
+Multiple databases supported (e.g., IEA, EcoInvent), but the platform team must pre-configure the chosen database
+Only selected factors will be visible for reporting
+Next steps: BCN to upload utility invoices by tomorrow and notify Tracera
+Next meeting: Explore the platform in more detail; Review AI training progress; Address new questions; Scope 3 Discussion

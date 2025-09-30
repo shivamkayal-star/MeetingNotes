@@ -1,0 +1,51 @@
+Call Notes | 04/16
+Hi Estabrook, Ben,
+ 
+Please find below the notes from today's call:
+ 
+Offsets >   https://bainandcompany.sharepoint.com/:x:/s/Global_Sustainability_At_Bain_Teams/ES-roWR2UBBPs_L65_CnFc4B6bH8FIL3MLZCtKySm206Pw?e=JwDxSN
+Ben to confirm Patch and Rubicon POCs
+Ben to reach out to the following vendors:
+Rubicon - To confirm Charm Identification Number and Retirement details
+EcoAct and CFS - Reforestation, Myanmar and India Sundarbans - Retirement pending
+Patch regarding Conhuas retirement details
+ 
+GT Document > 
+To discuss the following with GT - in a follow up call
+SAF inclusion in the footprint
+How we have changed our emission factors
+Air travel factors to 2022 DEFRA
+Exclusion of health insurance from PG&S - methodology change (not material)
+To incorporate some statements for DEFRA factor change and WTT in the GT word document
+Add a page for methodology
+For GRI - BCG and McKinsey mention these in detail
+SAF: 1810 tons is WTW - Aligned with our reporting for this year
+ 
+Process Deck > 
+Vendors:
+Therese still at TNC
+Patch and Rubicon POCs updated
+Kataman, Pachama, Numerco, Chevron - to be removed from the Vendor list
+ 
+Tableau >
+All the NA Hired cars and Taxi spends are accounted to Dallas
+To look at bills for DH and DC for New York
+Delve into units for the same
+Deep dive into Riyadh and Dubai
+Partners in Riyadh are booking flights from Dubai and they don't fly most of them
+To understand cancellation trends
+Compare Riyadh, Dubai trends with other offices
+Linda said that finance is also going to track into these
+To tackle this with Linda and the Travel team
+Timeline for Premises Dashboard
+No need to wait for assurance
+Time it when we do our bigger update to the SharePoint sites - Footprint and Offsets
+We won't be able to fully update our offsets
+Aim it around Earth Day
+ 
+Scope 3 Calculation Methodology >
+Waste and Upstream
+Reasons why we include/exclude something
+Ben would like to see the rationale behind emission factors for suppliers methodology
+Are we doing it aligned with GHGP?
+Is there any new guidance on this?

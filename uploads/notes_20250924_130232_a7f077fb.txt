@@ -1,0 +1,38 @@
+Call Notes w/ Tracera | 08/27
+Hi team,
+ 
+Please find below the notes from the call with Tracera:
+
+Tracera Pilot> 
+Account & Meter Setup:
+Handled by Tracera team during onboarding
+Bain only updates if new meters arise (rare)
+AI feature planned next year to auto-extract account/meter numbers from invoices
+Common Area Electricity:
+If screenshots are in consistent template month-to-month, Tracera team can help automate
+Feature in progress: allow office specific upload of provider’s own template (planned for next year)
+Flagging:
+Thresholds are customizable and can align with Bain’s internal audit depth
+Review:
+Tracera team to enable invoice level review feature
+Estimation:
+Gaps can be filled by specifying missing months
+Current option: Universal Average (uses this year + previous year)
+“Current year only” averaging to be enabled for Bain
+Partial months not supported yet. Planned to be enabled by end of year
+Replacement rule: if invoice arrives later, interpolated data is auto-replaced by actual invoice
+Scope 3 Business Travel Costs for bus/coach travel:
+October update: tool will add site-based KPI data collection and invoices can be tagged as Scope 3
+Vehicles & Fleet Data:
+Account numbers in Excel template can be set as custom identifiers (e.g., “Diesel Vehicles,” “SUV Fleet”)
+No field for vehicle count as data typically aggregated by type
+Notes section available for clarifications
+Further discussion planned for next meeting
+Platform Access:
+Some members couldn’t log in as forgot password email is not coming through
+Cause: invitation links expire after 7 days. If never activated, users need new invite
+Fix: remove & re-add users. Escalate to support if still problematic
+CDM Training:
+Tracera to share onboarding materials
+Tracera team can also join if helpful - have people who speak other languages as well
+ 

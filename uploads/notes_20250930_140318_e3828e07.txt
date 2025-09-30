@@ -1,0 +1,18 @@
+EoD Notes | 04/22
+Hi Estabrook, Ben,
+ 
+Please find below the EoD Notes for today:
+ 
+Carbon Deck > https://bainandcompany.sharepoint.com/:p:/s/Global_Sustainability_At_Bain_Teams/ETnuFOJ9JipNnaRTEZO9Wz0BehrFSxwc2yxD7RWfIbgkoQ?e=AZqNdK
+Updated the LT Deck  
+ 
+GHG Reporting Document > https://bainandcompany.sharepoint.com/:w:/s/Global_Sustainability_At_Bain_Teams/Ee2_MwotCXhEq8-Ehz6AJrUBcPp_sDuhxBZlNP3k4snfSw?e=uAevza
+Updated the GT emissions reporting document to include WTT and DEFRA verbatim in the methodology
+Cross validated the verbatim using sources from McK and BCG
+SAF data has been updated basis latest EcoOnline numbers
+As discussed, the offsets table has been removed 
+ 
+Premises Dashboard >
+We were able to identify and fix the issue in the Premises Dashboard
+[Input Required] Ben to test the Dashboard and provide feedback on the same
+The team will upload the final dashboard on SharePoint after Ben's go ahead

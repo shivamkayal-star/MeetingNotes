@@ -22,3 +22,18 @@ uploads/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# --- keep these data files in Git (source of truth) ---
+!repository/
+!repository/meeting_notes.json
+!uploads/
+!uploads/*.txt
+
+# --- still ignore generated artifacts ---
+repository/faiss_index.bin
+repository/metadata.pkl
+repository/index_state.json
+logs/
+__pycache__/
+*.pyc
+.env

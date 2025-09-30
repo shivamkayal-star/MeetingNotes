@@ -1,0 +1,46 @@
+Call Notes | 05/07
+Hi Estabrook, Ben,
+ 
+Please find below the notes from today's call:
+ 
+Carbon Assessment >
+To reach out to New York CDM for further data on district heating
+To confirm if building level steam usage for heating can be accessed
+ 
+GT Assurance > 
+Offsets Diligence Deck
+Carbon team to create a excel file for offsets diligence to keep the methodology same as previous years
+ 
+Building Rubric > https://bainandcompany.sharepoint.com/:x:/s/Global_Sustainability_At_Bain_Teams/EQLyko0rpHdPojrf6IBKOCUBhkJpQZyMakjgZVHFkW8mgA?e=zWZFK5
+Chicago: 131 South Dearborn
+No renewable energy source for electricity
+The old Chicago office does not report either DH or DC
+The new building have data available for all waste types except incinerated waste
+Ben will review the survey response and get back to carbon team
+Montreal: Place Ville Marie
+Used Toronto office as a proxy to do the comparison
+The building has both District Steam and Heat pumps
+The building mentioned that they have district steam and source of energy for that is electricity
+Pro-rated share provided by the landlord for water and electricity
+The score for EV charging needs no change
+Ben to confirm the number of FTEs for the office with Peter Grey
+Have updated the score which is now 4.12
+Due to district steam and chillers - given a score of 3
+EV charging - given a score of 5
+ 
+Air Travel Trends>
+AMEX , CWT are merging
+Carbon Team noticed that few duplicates were flowing in from Amex and CWT data
+In the analysis for finding the duplicate bookings excluded those data points
+To share the excel file with few examples of duplicate bookings from Amex and CWT
+To deep dive further in Riyadh Air Travel emissions
+Riyadh's total footprint for 2024 was 6400 tCO2e around 5500 tCO2e were from Air Travel
+To look into the booking trend is done partners/associate partners
+ 
+Renoster Lecture Deck >  https://bainandcompany.sharepoint.com/:p:/s/Global_Sustainability_At_Bain_Teams/EX1RRWmtvVRNjBkAh6NG754BnNhSrN0nmeEvMSDTP-oTQw?e=yW1Gmy
+Slide 2: Categorized CFS as an exchange
+Slide 3 : Ungrouped the Developers and Brokers
+Created a clustered bar graph
+ 
+Patch Counter Proposal > https://bainandcompany.sharepoint.com/:p:/s/Global_Sustainability_At_Bain_Teams/ETz7WmwfZaVAveyPW1tHXOoBYaIY3TuL15A_lrS1tdoFrA?e=xQufRM
+No changes required before Sam's call tomorrow (05/07)

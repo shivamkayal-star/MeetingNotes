@@ -1,0 +1,18 @@
+EoD Notes | 03/21
+Hi Estabrook, Ben,
+ 
+Please find below the EoD Notes for today (03/21):
+ 
+Carbon Assessment>
+Continued working on documentation
+PG&S Cookbook, In-depth Methodology
+GCTT Cookbook
+Reverted to mails on RE100
+GCTT Factors>
+Working on the revised GCTT Factors
+Running sense checks to verify the updated factors provided by Ecometrica
+Validating the assumption from provided sources
+Comparing factors with 2022 assumptions
+EACs>
+We are awaiting on quotes from most vendors
+We can discuss in the coming week

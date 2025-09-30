@@ -1,0 +1,32 @@
+Call Notes w/ Sam | 08/26
+Hi team,
+ 
+Please find below the notes from Sam’s call:
+ 
+Carbon Budgets Dashboard Email>
+Sam to share the carbon budget dashboard email. No changes required.
+AI Emissions Projections>
+Could updated estimates be ready before Sept 18 call?
+Ideas:
+Use PG&S data
+Use OpenAI subscription annual cost and use better emission factor
+Estimate emissions per request × number of requests (approximate)
+Two triangulation approaches could yield comparable ranges
+Earliest update feasible: Sept 12
+Casey suggested to add note that updates are WIP
+If near final estimates, include directly; otherwise frame as WIP
+Casey suggested TSG may have better tracking of query volumes than current PG&S view
+Task: Review different emissions factors available and identify useful metrics
+Agreement: team to share major emission factors + activity links in a few days
+Fees Discussion>
+Isometrix fees: Total = $30,000; Half is fixed fee; Half is tied to offset purchase
+BeZero fees: check if additional cost for any data point
+Internal Carbon Price Model>
+Increase Offset growth to 10%
+Emissions: 174,000 this year to 161,000 next year in model. Team to recheck spreadsheet, verify data updates.
+Client Carbon Recoveries>
+Present estimate is doubling first-half recovery
+Actions: Compare first half of prior year vs. this year to refine projection
+For next year: triangulate with air/business travel projections + fee structure
+Question: whether to increase fees next year
+ 

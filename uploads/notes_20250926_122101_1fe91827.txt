@@ -1,0 +1,29 @@
+Call Notes | 06/09
+Hi Estabrook, Ben,
+ 
+Please find below the notes from today’s call:
+ 
+Rainforest Builder>
+Moving forward with an offtake agreement
+Approved by Renoster during its diligence process
+Ben received the proposed contract on Friday; he will engage the legal team for review and next steps
+ 
+Carbonplace platform>
+Uncertainty around retiring credits at this time
+Ongoing conversations with EcoAct on volume holds; however, EcoAct will not support direct buybacks
+Plan to hold CFS volumes in the CBL platform
+Preference to work with existing vendors to manage and retain credits in-wallet, instead of onboarding new ones
+ 
+Carbon accounting controls>
+EcoOnline maintains a controls document (not comprehensive)
+TSG documentation also serves as a reference
+Build a comprehensive controls document for assurance and audit readiness
+Likely to be integrated with ISO methodology documentation
+ 
+Patch Proposal > https://bainandcompany.sharepoint.com/:p:/s/Global_Sustainability_At_Bain_Teams/ETz7WmwfZaVAveyPW1tHXOoBYaIY3TuL15A_lrS1tdoFrA?e=asmyiO
+Ben believes a good proposal and we can go ahead with it
+ 
+SBTi Near-term Target> https://bainandcompany.sharepoint.com/:p:/r/sites/Global_Sustainability_At_Bain_Teams/Shared%20Documents/Carbon%20Team/6.%20Path%20to%20Net%20Zero/SBTi%20Near-term%20Target%20Setting%202025/Archive/SBTi%20Near-term%20Target%20Setting%20Process%20Deck_v1.pptx?d=w77d63396c018465cb890a761195ff528&csf=1&web=1&e=UcWKGf
+Low ambition: 60.9%; Mid: match McK at 64.5%; Can think of a high case
+We should use the SBTi calculator
+To add bar charts to our line charts

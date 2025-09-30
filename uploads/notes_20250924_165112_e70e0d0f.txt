@@ -1,0 +1,17 @@
+Call Notes w/ Sam | 08/06
+
+Hi Team,
+ 
+Please find below the notes from the call with Sam:
+
+SBTi near-term target>
+Sam asked to finalize the SBTi near-term deck for September GOC
+Internal carbon price model>
+Sam said that multiple confounding factors are affecting carbon offset costs: Inflation; US tax credits, especially on SAF
+Sam said current $188/t base assumptions may be too optimistic; suggests taking the average of the last 3 years
+New base price: $230/t
+Inflation rate: 3% annually
+Sam suggested ramping costs gradually over time to avoid large price shocks later
+Sam suggested using contractual emissions reductions as a proxy for client-driven SAF demand
+Casey informed that currently only 2–3 client contracts include explicit emissions reduction language; estimated impact: <200t
+Casey to quantify current contractual reductions

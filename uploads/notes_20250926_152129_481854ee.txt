@@ -1,0 +1,29 @@
+Call Notes | 05/14
+Hi Estabrook, Ben,
+ 
+Please find below the notes from today's call:
+ 
+SABA RFP >https://bainandcompany.sharepoint.com/:p:/s/Global_Sustainability_At_Bain_Teams/EadBxTyTJghOszKDgxA8fycBRfo6jGZ-_pw_iBikRFlG5A?e=uY1iTQ
+Updated the air travel emission projection to include the reductions from fuel switching , operational efficiency , volume changes and fuel blending 2025 onwards
+Kept growth FTE percentage as earlier i.e. 15% for 2025 & 2026 and 5% from 2027-2040
+ 
+Thankyou Mail>
+Attaching the OFT for the thankyou mail for Bain CDMs
+Sam to share the mail with CDMs
+ 
+Carbon Assessment>
+New York District heating :
+Follow up with the building manager to confirm whether steam consumption includes both DH and DC or just DH
+ 
+Building Rubric > https://bainandcompany.sharepoint.com/:p:/s/Global_Sustainability_At_Bain_Teams/Ecp1JZvw031FkY_k7L9KsG4BeT0oJ2-dn8X4j5T6WTEc0A?e=9eultv
+HVAC :  
+Energy Source: Increase the score as 5 for Chicago and Montreal, and 3 for Brussels
+Mechanical System: Increase Montreal's score to 4 (with a note with the reason of  unusual rating)
+ 
+GT Assurance >
+GT Reporting Doc:
+As per Ben we can add the SAF table to the reporting document
+Replicate existing figures from GRI table into the document
+To validate with Will regarding supplier data methodology for Scope 3
+PG&S Questions:
+To confirm whether to share PG&S data inclusive of subsidiaries on the GT call

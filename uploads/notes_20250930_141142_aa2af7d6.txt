@@ -1,0 +1,17 @@
+EoD Notes | 04/11
+Hi Estabrook, Ben
+Please find below the EoD Notes for today (04/11)
+ 
+Carbon Assessment > 
+Reviewed updated Ecometrica reports
+SAF is now included in the report
+Paris CoVs are now included under MBIs
+Sent across a mail to Ecometrica regarding minor inconsistencies in Lima end date and Incinerated Waste type
+Working on updating the Tableau Dashboard for Carbon Assessment
+ 
+GTT >
+Coordinated with GTT team regarding inconsistencies in Air and Hotel data files
+Got FCM data for 2024 Offsites included in Air and Hotels
+ 
+Offsets >
+[Input required] Please find attached the OFT for our top up offset purchases from EcoAct

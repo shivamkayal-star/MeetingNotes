@@ -1,0 +1,41 @@
+Call Notes | 06/30
+Hi Estabrook, Ben,
+ 
+Please find below the notes from today’s call:
+ 
+SBTi Near Term Target>
+To prepare context for the executive team about SBTi Targets
+Importance of contextual storytelling emphasized:
+Provide background and rationale for SBTI
+Explain goals, requirements, and ambition clearly
+Define a clear, analytical pathway to achieve the targets by 2030
+Position the targets as part of Bain’s long-term climate narrative
+Present final package to Sam for GOC discussions
+ 
+Carbon Budget Mid-Progress>
+Carbon team to draft an answer first and discuss with Sam
+ 
+Building Rubric>
+The timeline is 3 weeks
+To finalize and share analysis with Peter Grey
+ 
+Hotels Account Mapping>
+To identify a rule-based logic to replicate the AI-tagging currently used by Symfony
+Send a preliminary update email to Elizabeth explaining the current classification issues and analytical challenges
+Ben expressed concern about building a dashboard on weak data foundations
+Suggested aligning expectations early with stakeholders if data quality is not sufficient
+Coordinate discussion with Casey & Elizabeth on tool viability
+ 
+COPASTUR to AMEX GBT Transition>
+Analyze monthly breakdown of Sao Paulo bookings (not just quarterly) to detect the exact cutover month
+Ben to send a note to Linda and Celia to confirm
+The exact cutover date from COPASTUR to Amex GBT
+Whether any additional data can be expected or requested from COPASTUR
+Communicate known concerns and working assumptions to Elizabeth for awareness
+ 
+Amex CWT Duplicates>
+To prepare a summary deck for Sam
+Slide 1: Visualize the duplicate detection using PNR-only and PNR + mileage fields
+Slide 2: Show a simple table outlining the emissions impact of the identified duplicates
+Purpose: Support a formal discussion with Sam as part of ISO 14000 governance requirements
+ 

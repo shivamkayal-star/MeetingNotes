@@ -1,0 +1,43 @@
+Call Notes | 06/25
+Hi Estabrook, Ben,
+ 
+Please find below the notes from today's call (06/23):
+ 
+DEFRA 2025 update>
+McKinsey feels that DEFRA has made a mistake with the WTT factors
+They have reached out to DEFRA to confirm this
+Ben feels we should also reach out regarding the same
+We can explore using different base and WTT factors (2025 base factors, 2022 WTT factors)
+Confirm with EcoOnline whether this is feasible on the portal or not
+To prepare 3 slides for Sam with factor variance and emission implication
+Only TTW factors
+Only WTT factors
+WTW factors (Total)
+ 
+SBTi Near-term target setting>
+SAF:
+To update cost for SAF - $99/ton (Southwest) and $191/ton
+We can consider showing a range ($100-200)
+Total cost and incremental cost to be shown separately
+We are already buying 5% SAF - SAF85
+Cost of SAF 85 is higher
+In addition to this, how much more incremental SAF do we need to purchase
+ 
+Eligibility Requirements:
+SBTi requires a number for oil and gas revenue and wants it to be substantiated as well
+Do we need separate document for different data points or a single document?
+ 
+AMEX-CWT Duplicates>
+Double counting CWT since 2024
+No change to 2024 assessment
+Ben is aligned with removing CWT from consideration (90% duplicates)
+We should switch to GBT entirely
+To prepare the following for Linda and Celia
+Data to substantiate 90%
+A summary table
+Detailed examples for all the issues:
+Full list of missing PNR
+List of matching PNR and mismatched mileage
+Flag good mismatches
+0 mileage issues
+ 
