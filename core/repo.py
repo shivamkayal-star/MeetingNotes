@@ -1,24 +1,20 @@
 # core/repo.py
-import json, os, base64, hashlib
+import json, os, hashlib, base64
 from pathlib import Path
-from typing import List, Dict
 from datetime import datetime
-import urllib.request, urllib.error
-
+from typing import List, Dict
 import pandas as pd
+import urllib.request, urllib.error
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 REPO_DIR     = PROJECT_ROOT / "repository"
 UPLOADS_DIR  = PROJECT_ROOT / "uploads"
-JSON_PATH    = REPO_DIR / "meeting_notes.json"
+LOGS_DIR     = PROJECT_ROOT / "logs"
 
-LOGS_DIR   = PROJECT_ROOT / "logs"
-LOG_PATH   = LOGS_DIR / "repo_log.csv"
+JSON_PATH = REPO_DIR / "meeting_notes.json"
+LOG_PATH  = LOGS_DIR / "repo_log.csv"
 
 
-# -----------------------------------------------------------------------------
-# Basic local storage helpers
-# -----------------------------------------------------------------------------
 def ensure_dirs():
     REPO_DIR.mkdir(parents=True, exist_ok=True)
     UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
@@ -26,175 +22,121 @@ def ensure_dirs():
 
 
 def load_existing() -> List[Dict]:
-    """Load all records from repository/meeting_notes.json."""
     if JSON_PATH.exists():
         return json.loads(JSON_PATH.read_text(encoding="utf-8"))
     return []
 
 
-# -----------------------------------------------------------------------------
-# GitHub sync helpers
-# -----------------------------------------------------------------------------
 def _get_github_config():
-    """
-    Read GitHub settings from Streamlit secrets (preferred) or environment vars.
-    Returns dict or None if not configured.
-    """
-    token = repo = branch = None
     try:
-        import streamlit as st  # type: ignore
-        token = st.secrets.get("GITHUB_TOKEN")
-        repo = st.secrets.get("GITHUB_REPO")
+        import streamlit as st
+        token  = st.secrets.get("GITHUB_TOKEN")
+        repo   = st.secrets.get("GITHUB_REPO")
         branch = st.secrets.get("GITHUB_BRANCH", "main")
     except Exception:
-        token = os.getenv("GITHUB_TOKEN")
-        repo = os.getenv("GITHUB_REPO")
+        token  = os.getenv("GITHUB_TOKEN")
+        repo   = os.getenv("GITHUB_REPO")
         branch = os.getenv("GITHUB_BRANCH", "main")
 
     if not token or not repo:
         return None
-    return {"token": token, "repo": repo, "branch": branch or "main"}
+
+    return {"token": token, "repo": repo, "branch": branch}
 
 
-def _github_request(method: str, url: str, token: str, body: dict | None = None) -> dict:
-    """Minimal GitHub REST request using stdlib only."""
+def _github_request(method: str, url: str, token: str, body: dict | None = None):
     headers = {
         "Authorization": f"token {token}",
+        "User-Agent": "meeting-notes-sync",
         "Accept": "application/vnd.github+json",
-        "User-Agent": "meeting-notes-studio",
     }
-    data = None
-    if body is not None:
-        data = json.dumps(body).encode("utf-8")
-        headers["Content-Type"] = "application/json"
-
+    data = json.dumps(body).encode("utf-8") if body else None
     req = urllib.request.Request(url, data=data, headers=headers, method=method)
+
     with urllib.request.urlopen(req, timeout=20) as resp:
-        raw = resp.read().decode("utf-8")
-        return json.loads(raw) if raw else {}
+        return json.loads(resp.read().decode("utf-8"))
 
 
-def push_file_to_github(local_path: Path, repo_rel_path: str, message: str) -> None:
-    """
-    Commit the given local file into the GitHub repo at `repo_rel_path`.
-    - Creates the file if it doesn't exist
-    - Updates it if it does (using existing SHA)
-    Silently ignores errors so the UI is never broken by sync failures.
-    """
+def push_file(local_path: Path, repo_rel_path: str, message: str):
     cfg = _get_github_config()
     if not cfg:
-        # GitHub sync not configured; nothing to do
-        return
+        return  # Sync disabled
 
-    token = cfg["token"]
-    repo  = cfg["repo"]
+    token  = cfg["token"]
+    repo   = cfg["repo"]
     branch = cfg["branch"]
 
     url = f"https://api.github.com/repos/{repo}/contents/{repo_rel_path}"
 
-    # Encode file content as base64
-    content_bytes = local_path.read_bytes()
-    b64_content = base64.b64encode(content_bytes).decode("utf-8")
+    # Read & base64-encode
+    content = base64.b64encode(local_path.read_bytes()).decode("utf-8")
 
-    # Try to get existing file SHA
-    sha = None
+    # Get existing SHA
     try:
         existing = _github_request("GET", f"{url}?ref={branch}", token)
         sha = existing.get("sha")
     except Exception:
-        sha = None  # file probably does not exist yet
+        sha = None
 
     payload = {
         "message": message,
-        "content": b64_content,
-        "branch": branch,
+        "content": content,
+        "branch": branch
     }
     if sha:
         payload["sha"] = sha
 
     try:
-        _github_request("PUT", url, token, body=payload)
+        _github_request("PUT", url, token, payload)
     except Exception as e:
-        # Surface error in Streamlit and logs so we can debug
         try:
             import streamlit as st
-            st.error(f"GitHub sync failed for {repo_rel_path}: {e}")
-        except Exception:
-            # If Streamlit not available (e.g. during tests), at least print
-            print(f"GitHub sync failed for {repo_rel_path}: {e}")
+            st.error(f"GitHub sync failed: {e}")
+        except:
+            print("GitHub sync failed:", e)
 
-# -----------------------------------------------------------------------------
-# Append records + snapshot + logs (with GitHub sync)
-# -----------------------------------------------------------------------------
+
 def append_records(new_records: List[Dict]) -> int:
-    """
-    Append to repository/meeting_notes.json; returns total record count.
-    Also pushes the updated JSON to GitHub if configured.
-    """
     ensure_dirs()
     data = load_existing()
     data.extend(new_records)
-    JSON_PATH.write_text(
-        json.dumps(data, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
 
-    # NEW: push JSON to GitHub
-    try:
-        rel_path = "repository/meeting_notes.json"
-        msg = f"Update meeting notes ({len(data)} records)"
-        push_file_to_github(JSON_PATH, rel_path, msg)
-    except Exception:
-        pass
+    JSON_PATH.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    # SYNC JSON
+    push_file(JSON_PATH, "repository/meeting_notes.json",
+              f"Update meeting notes ({len(data)} records)")
 
     return len(data)
 
 
 def save_snapshot(text: str) -> Path:
-    """
-    Save the pasted notes into uploads/ for audit; returns file path.
-    Also pushes the .txt snapshot into GitHub if configured.
-    """
     ensure_dirs()
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-    digest = hashlib.sha256(text.encode("utf-8", "ignore")).hexdigest()[:8]
-    path = UPLOADS_DIR / f"notes_{ts}_{digest}.txt"
+    h  = hashlib.sha256(text.encode("utf-8")).hexdigest()[:8]
+
+    path = UPLOADS_DIR / f"notes_{ts}_{h}.txt"
     path.write_text(text, encoding="utf-8")
 
-    # NEW: push snapshot .txt to GitHub
-    try:
-        rel_path = f"uploads/{path.name}"
-        msg = f"Add notes snapshot {path.name}"
-        push_file_to_github(path, rel_path, msg)
-    except Exception:
-        pass
+    # SYNC UPLOAD
+    push_file(path, f"uploads/{path.name}", f"Add snapshot {path.name}")
 
     return path
 
 
-# -----------------------------------------------------------------------------
-# Logging helpers (unchanged)
-# -----------------------------------------------------------------------------
-def _ensure_logs_dir():
-    LOGS_DIR.mkdir(parents=True, exist_ok=True)
-
-
-def append_log_rows(rows: list[dict]) -> None:
-    """
-    rows: list of {"Notes Type": str, "Date": str, "Upload Date": str, "Source ID": str}
-    """
-    _ensure_logs_dir()
-    df_new = pd.DataFrame(rows)
+def append_log_rows(rows: List[Dict]):
+    ensure_dirs()
+    new = pd.DataFrame(rows)
     if LOG_PATH.exists():
-        df_old = pd.read_csv(LOG_PATH)
-        df_all = pd.concat([df_old, df_new], ignore_index=True)
+        old = pd.read_csv(LOG_PATH)
+        all = pd.concat([old, new], ignore_index=True)
     else:
-        df_all = df_new
-    df_all.to_csv(LOG_PATH, index=False)
+        all = new
+    all.to_csv(LOG_PATH, index=False)
 
 
-def read_log_df() -> pd.DataFrame:
-    _ensure_logs_dir()
+def read_log_df():
+    ensure_dirs()
     if LOG_PATH.exists():
         return pd.read_csv(LOG_PATH)
     return pd.DataFrame(columns=["Notes Type", "Date", "Upload Date", "Source ID"])
