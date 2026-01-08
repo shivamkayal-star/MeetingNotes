@@ -154,6 +154,10 @@ with tab_input:
     with col_right:
         st.markdown("#### Ingestion Log")
 
+        # DEBUG: show which repo.py file is actually running
+        import inspect, core.repo, streamlit as st
+        st.code(inspect.getsource(core.repo), language="python")
+
         # DEBUG: GitHub sync config visibility
         has_token = "GITHUB_TOKEN" in st.secrets
         repo_name = st.secrets.get("GITHUB_REPO", "(missing)")
