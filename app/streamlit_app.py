@@ -151,28 +151,43 @@ with tab_input:
                 st.success(f"Parsed {len(df)} rows.")
 
     # ----- RIGHT: ingestion log -----
-    with col_right:
-        st.markdown("#### Ingestion Log")
-        from core.repo import load_existing
-        
-        log_df = read_log_df()
-        repo_records = load_existing()
-        repo_count = len(repo_records)
-        
-        if repo_count == 0:
-            st.caption("Repository is empty — no notes found.")
-        else:
-            st.caption(f"Repository contains {repo_count} notes.")
-        
-        if log_df.empty:
-            st.warning("Ingestion log is empty (likely because this is a new deployment).")
-        else:
-            st.dataframe(
-                log_df.sort_values("Upload Date", ascending=False),
-                use_container_width=True,
-                height=300
-            )
+with col_right:
+    st.markdown("#### Ingestion Log")
 
+    # Show how many notes are in the JSON repository
+    repo_records = load_existing()
+    repo_count = len(repo_records)
+    if repo_count == 0:
+        st.caption("Repository is empty — no notes found.")
+    else:
+        st.caption(f"Repository contains {repo_count} notes.")
+
+    # Read the ingestion log (may be empty on a fresh deployment)
+    log_df = read_log_df()
+
+    # Button to rebuild the FAISS search index from repository/meeting_notes.json
+    if st.button("Rebuild search index"):
+        try:
+            with st.spinner("Rebuilding embeddings & FAISS index…"):
+                stats = build_from_json()
+            st.success(f"Index rebuilt with {stats['num_vectors']} vectors.")
+            # Force reload of index + metadata in the Search tab
+            st.session_state.pop("faiss_index", None)
+            st.session_state.pop("faiss_meta", None)
+        except Exception as e:
+            import traceback
+            st.error("Index rebuild failed:")
+            st.code(traceback.format_exc(), language="python")
+
+    # Show the ingestion log table (if any rows exist)
+    if log_df.empty:
+        st.warning("Ingestion log is empty (likely because this is a new deployment).")
+    else:
+        st.dataframe(
+            log_df.sort_values("Upload Date", ascending=False),
+            use_container_width=True,
+            height=300
+        )
 
     st.markdown("---")
 
