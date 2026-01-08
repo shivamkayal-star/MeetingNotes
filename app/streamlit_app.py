@@ -14,7 +14,7 @@ import faiss
 
 from dotenv import load_dotenv
 from openai import OpenAI
-from core.repo import append_records, save_snapshot, append_log_rows, read_log_df
+from core.repo import append_records, save_snapshot, append_log_rows, read_log_df, load_existing
 from core.parsing import parse_notes
 from core.records import df_to_records
 from core.indexing import build_from_json
