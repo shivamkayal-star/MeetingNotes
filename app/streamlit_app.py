@@ -151,101 +151,101 @@ with tab_input:
                 st.success(f"Parsed {len(df)} rows.")
 
     # ----- RIGHT: ingestion log -----
-with col_right:
-    st.markdown("#### Ingestion Log")
+    with col_right:
+        st.markdown("#### Ingestion Log")
 
-    # Show how many notes are in the JSON repository
-    repo_records = load_existing()
-    repo_count = len(repo_records)
-    if repo_count == 0:
-        st.caption("Repository is empty — no notes found.")
-    else:
-        st.caption(f"Repository contains {repo_count} notes.")
+        repo_records = load_existing()
+        repo_count = len(repo_records)
+        if repo_count == 0:
+            st.caption("Repository is empty — no notes found.")
+        else:
+            st.caption(f"Repository contains {repo_count} notes.")
 
-    # Read the ingestion log (may be empty on a fresh deployment)
-    log_df = read_log_df()
+        log_df = read_log_df()
 
-    # Button to rebuild the FAISS search index from repository/meeting_notes.json
-    if st.button("Rebuild search index"):
-        try:
-            with st.spinner("Rebuilding embeddings & FAISS index…"):
-                stats = build_from_json()
-            st.success(f"Index rebuilt with {stats['num_vectors']} vectors.")
-            # Force reload of index + metadata in the Search tab
-            st.session_state.pop("faiss_index", None)
-            st.session_state.pop("faiss_meta", None)
-        except Exception as e:
-            import traceback
-            st.error("Index rebuild failed:")
-            st.code(traceback.format_exc(), language="python")
+        if st.button("Rebuild search index"):
+            try:
+                with st.spinner("Rebuilding embeddings & FAISS index…"):
+                    stats = build_from_json()
+                st.success(f"Index rebuilt with {stats['num_vectors']} vectors.")
+                st.session_state.pop("faiss_index", None)
+                st.session_state.pop("faiss_meta", None)
+            except Exception as e:
+                import traceback
+                st.error("Index rebuild failed:")
+                st.code(traceback.format_exc(), language="python")
 
-    # Show the ingestion log table (if any rows exist)
-    if log_df.empty:
-        st.warning("Ingestion log is empty (likely because this is a new deployment).")
-    else:
-        st.dataframe(
-            log_df.sort_values("Upload Date", ascending=False),
+        if log_df.empty:
+            st.warning("Ingestion log is empty (likely because this is a new deployment).")
+        else:
+            st.dataframe(
+                log_df.sort_values("Upload Date", ascending=False),
+                use_container_width=True,
+                height=300
+            )
+
+    # =====================
+    # FULL-WIDTH SECTION
+    # =====================
+    st.markdown("---")
+
+    # ----- Editable table + Submit #2 (SAVE) -----
+    if st.session_state.get("parsed_df") is not None:
+        st.markdown("#### Edit parsed table (you can modify any cell)")
+        edited = st.data_editor(
+            st.session_state["parsed_df"],
             use_container_width=True,
-            height=300
+            num_rows="dynamic",
+            key="editor_parsed",
         )
+        st.session_state["parsed_df"] = pd.DataFrame(edited)
 
-  st.markdown("---")
-  
-  # ----- Editable table + Submit #2 (SAVE) -----
-  if st.session_state.get("parsed_df") is not None:
-      st.markdown("#### Edit parsed table (you can modify any cell)")
-      edited = st.data_editor(
-          st.session_state["parsed_df"],
-          use_container_width=True,
-          num_rows="dynamic",
-          key="editor_parsed",
-      )
-      st.session_state["parsed_df"] = pd.DataFrame(edited)
-  
-      if st.button("Submit #2 — Confirm & Save to Repository", type="secondary"):
-          df_final = st.session_state["parsed_df"]
-          if df_final is None or df_final.empty:
-              st.warning("Nothing to save. Parse notes first.")
-          else:
-              # 1) convert to JSON records
-              records = df_to_records(df_final)
-              # 2) append to repository JSON
-              total = append_records(records)
-              # 3) save a snapshot (audit)
-              raw = st.session_state.get("raw_text", "")
-              snap = save_snapshot(raw) if raw else None
-  
-              # 4) log rows (Notes Type, Date, Upload Date, Source ID)
-              now_iso = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-              source_id = hashlib.sha256(raw.encode("utf-8", "ignore")).hexdigest()[:8] if raw else ""
-              mini = df_final[["Date", "Notes Type"]].copy()
-              mini = mini.astype(str).applymap(lambda s: s.strip())
-              mini = mini[(mini["Date"] != "") & (mini["Notes Type"] != "")]
-              mini = mini.drop_duplicates()
-              if not mini.empty:
-                  mini["Upload Date"] = now_iso
-                  mini["Source ID"] = source_id
-                  append_log_rows(mini.to_dict(orient="records"))
-  
-              # 5) build FAISS index (blocking with spinner)
-              try:
-                  with st.spinner("Building embeddings & FAISS index…"):
-                      stats = build_from_json()
-                  msg = f"Saved {len(records)} rows. Repository now has {total} records. Index rebuilt with {stats['num_vectors']} vectors."
-                  st.session_state["flash_success"] = msg
-                  st.session_state.pop("faiss_index", None)   # ← force reload in Search
-                  st.session_state.pop("faiss_meta", None)
-  
-              except Exception as e:
-                  import traceback
-                  st.error("Indexing failed:")
-                  st.code(traceback.format_exc(), language="python")
-                  # keep the saved-rows message
-                  st.session_state["flash_success"] = "Saved rows. Indexing failed — see error above."
-  
-              # 6) clear controls on next render and rerun
-              st.session_state["clear_inputs"] = True
-              st.rerun()
+        if st.button("Submit #2 — Confirm & Save to Repository", type="secondary"):
+            df_final = st.session_state["parsed_df"]
+            if df_final is None or df_final.empty:
+                st.warning("Nothing to save. Parse notes first.")
+            else:
+                # Convert to JSON records
+                records = df_to_records(df_final)
+                total = append_records(records)
+
+                # Save snapshot
+                raw = st.session_state.get("raw_text", "")
+                snap = save_snapshot(raw) if raw else None
+
+                # Log rows
+                now_iso = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                source_id = hashlib.sha256(raw.encode("utf-8", "ignore")).hexdigest()[:8] if raw else ""
+                mini = df_final[["Date", "Notes Type"]].copy()
+                mini = mini.astype(str).applymap(lambda s: s.strip())
+                mini = mini[(mini["Date"] != "") & (mini["Notes Type"] != "")]
+                mini = mini.drop_duplicates()
+                if not mini.empty:
+                    mini["Upload Date"] = now_iso
+                    mini["Source ID"] = source_id
+                    append_log_rows(mini.to_dict(orient="records"))
+
+                # Rebuild search index
+                try:
+                    with st.spinner("Building embeddings & FAISS index…"):
+                        stats = build_from_json()
+                    msg = (
+                        f"Saved {len(records)} rows. Repository now has {total} records. "
+                        f"Index rebuilt with {stats['num_vectors']} vectors."
+                    )
+                    st.session_state["flash_success"] = msg
+                    st.session_state.pop("faiss_index", None)
+                    st.session_state.pop("faiss_meta", None)
+
+                except Exception as e:
+                    import traceback
+                    st.error("Indexing failed:")
+                    st.code(traceback.format_exc(), language="python")
+                    st.session_state["flash_success"] = "Saved rows. Indexing failed — see error above."
+
+                # Clear & rerun
+                st.session_state["clear_inputs"] = True
+                st.rerun()
 
 # ====== Search helpers (ported from old app, adapted to repository/) ======
 ALWAYS_ENTITIES = {"cwt", "gbt", "sbt", "sbti", "gt", "eod", "bcg", "esg", "mck", "amex"}
