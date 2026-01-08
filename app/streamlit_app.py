@@ -153,27 +153,26 @@ with tab_input:
     # ----- RIGHT: ingestion log -----
     with col_right:
         st.markdown("#### Ingestion Log")
+        from core.repo import load_existing
+        
         log_df = read_log_df()
-        if st.button("Rebuild search index"):
-            try:
-                with st.spinner("Rebuilding embeddings & FAISS index…"):
-                    stats = build_from_json()
-                st.success(f"Index rebuilt with {stats['num_vectors']} vectors.")
-                st.session_state.pop("faiss_index", None)   # ← force reload in Search
-                st.session_state.pop("faiss_meta", None)
-
-            except Exception as e:
-                import traceback
-                st.error("Index rebuild failed:")
-                st.code(traceback.format_exc(), language="python")
+        repo_records = load_existing()
+        repo_count = len(repo_records)
+        
+        if repo_count == 0:
+            st.caption("Repository is empty — no notes found.")
+        else:
+            st.caption(f"Repository contains {repo_count} notes.")
+        
         if log_df.empty:
-            st.caption("No notes ingested yet.")
+            st.warning("Ingestion log is empty (likely because this is a new deployment).")
         else:
             st.dataframe(
                 log_df.sort_values("Upload Date", ascending=False),
                 use_container_width=True,
                 height=300
             )
+
 
     st.markdown("---")
 
