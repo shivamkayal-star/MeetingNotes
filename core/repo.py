@@ -114,10 +114,14 @@ def push_file_to_github(local_path: Path, repo_rel_path: str, message: str) -> N
 
     try:
         _github_request("PUT", url, token, body=payload)
-    except Exception:
-        # Swallow errors: sync failure should not break the app
-        pass
-
+    except Exception as e:
+        # Surface error in Streamlit and logs so we can debug
+        try:
+            import streamlit as st
+            st.error(f"GitHub sync failed for {repo_rel_path}: {e}")
+        except Exception:
+            # If Streamlit not available (e.g. during tests), at least print
+            print(f"GitHub sync failed for {repo_rel_path}: {e}")
 
 # -----------------------------------------------------------------------------
 # Append records + snapshot + logs (with GitHub sync)
