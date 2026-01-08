@@ -153,7 +153,17 @@ with tab_input:
     # ----- RIGHT: ingestion log -----
     with col_right:
         st.markdown("#### Ingestion Log")
-
+      
+    # DEBUG: show whether GitHub sync is configured (without revealing secrets)
+    has_token = "GITHUB_TOKEN" in st.secrets
+    repo_name = st.secrets.get("GITHUB_REPO", "(missing)")
+    branch_name = st.secrets.get("GITHUB_BRANCH", "(missing)")
+    st.caption(
+        f"GitHub sync config — token: {'yes' if has_token else 'no'}, "
+        f"repo: {repo_name}, branch: {branch_name}"
+    )
+      
+      
         repo_records = load_existing()
         repo_count = len(repo_records)
         if repo_count == 0:
