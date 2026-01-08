@@ -17,7 +17,7 @@ LOG_PATH   = LOGS_DIR / "repo_log.csv"
 
 
 # -----------------------------------------------------------------------------
-# Basic local storage helpers (as before)
+# Basic local storage helpers
 # -----------------------------------------------------------------------------
 def ensure_dirs():
     REPO_DIR.mkdir(parents=True, exist_ok=True)
@@ -41,14 +41,12 @@ def _get_github_config():
     Returns dict or None if not configured.
     """
     token = repo = branch = None
-    # Prefer Streamlit secrets when running inside the app
     try:
         import streamlit as st  # type: ignore
         token = st.secrets.get("GITHUB_TOKEN")
         repo = st.secrets.get("GITHUB_REPO")
         branch = st.secrets.get("GITHUB_BRANCH", "main")
     except Exception:
-        # Fallback: environment variables (useful for local/dev)
         token = os.getenv("GITHUB_TOKEN")
         repo = os.getenv("GITHUB_REPO")
         branch = os.getenv("GITHUB_BRANCH", "main")
@@ -59,9 +57,7 @@ def _get_github_config():
 
 
 def _github_request(method: str, url: str, token: str, body: dict | None = None) -> dict:
-    """
-    Minimal GitHub REST request using stdlib (no external dependencies).
-    """
+    """Minimal GitHub REST request using stdlib only."""
     headers = {
         "Authorization": f"token {token}",
         "Accept": "application/vnd.github+json",
@@ -96,18 +92,17 @@ def push_file_to_github(local_path: Path, repo_rel_path: str, message: str) -> N
 
     url = f"https://api.github.com/repos/{repo}/contents/{repo_rel_path}"
 
-    # Compute file content (base64-encoded)
+    # Encode file content as base64
     content_bytes = local_path.read_bytes()
     b64_content = base64.b64encode(content_bytes).decode("utf-8")
 
-    # Try to get existing file SHA (if file already exists on that branch)
+    # Try to get existing file SHA
     sha = None
     try:
         existing = _github_request("GET", f"{url}?ref={branch}", token)
         sha = existing.get("sha")
     except Exception:
-        # File may not exist yet; that's fine
-        sha = None
+        sha = None  # file probably does not exist yet
 
     payload = {
         "message": message,
@@ -119,12 +114,10 @@ def push_file_to_github(local_path: Path, repo_rel_path: str, message: str) -> N
 
     try:
         _github_request("PUT", url, token, body=payload)
-    except Exception as e:
-        try:
-            import streamlit as st
-            st.error(f"GitHub sync failed: {e}")
-        except Exception:
-            pass
+    except Exception:
+        # Swallow errors: sync failure should not break the app
+        pass
+
 
 # -----------------------------------------------------------------------------
 # Append records + snapshot + logs (with GitHub sync)
@@ -137,7 +130,10 @@ def append_records(new_records: List[Dict]) -> int:
     ensure_dirs()
     data = load_existing()
     data.extend(new_records)
-    JSON_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    JSON_PATH.write_text(
+        json.dumps(data, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
 
     # NEW: push JSON to GitHub
     try:
@@ -145,7 +141,6 @@ def append_records(new_records: List[Dict]) -> int:
         msg = f"Update meeting notes ({len(data)} records)"
         push_file_to_github(JSON_PATH, rel_path, msg)
     except Exception:
-        # Never fail the main flow due to sync problems
         pass
 
     return len(data)
@@ -174,7 +169,7 @@ def save_snapshot(text: str) -> Path:
 
 
 # -----------------------------------------------------------------------------
-# Logging helpers (unchanged, plus ensure_dirs usage)
+# Logging helpers (unchanged)
 # -----------------------------------------------------------------------------
 def _ensure_logs_dir():
     LOGS_DIR.mkdir(parents=True, exist_ok=True)
