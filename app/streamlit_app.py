@@ -189,63 +189,63 @@ with col_right:
             height=300
         )
 
-    st.markdown("---")
-
-    # ----- Editable table + Submit #2 (SAVE) -----
-    if st.session_state.get("parsed_df") is not None:
-        st.markdown("#### Edit parsed table (you can modify any cell)")
-        edited = st.data_editor(
-            st.session_state["parsed_df"],
-            use_container_width=True,
-            num_rows="dynamic",
-            key="editor_parsed",
-        )
-        st.session_state["parsed_df"] = pd.DataFrame(edited)
-
-        if st.button("Submit #2 — Confirm & Save to Repository", type="secondary"):
-            df_final = st.session_state["parsed_df"]
-            if df_final is None or df_final.empty:
-                st.warning("Nothing to save. Parse notes first.")
-            else:
-                # 1) convert to JSON records
-                records = df_to_records(df_final)
-                # 2) append to repository JSON
-                total = append_records(records)
-                # 3) save a snapshot (audit)
-                raw = st.session_state.get("raw_text", "")
-                snap = save_snapshot(raw) if raw else None
-
-                # 4) log rows (Notes Type, Date, Upload Date, Source ID)
-                now_iso = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                source_id = hashlib.sha256(raw.encode("utf-8", "ignore")).hexdigest()[:8] if raw else ""
-                mini = df_final[["Date", "Notes Type"]].copy()
-                mini = mini.astype(str).applymap(lambda s: s.strip())
-                mini = mini[(mini["Date"] != "") & (mini["Notes Type"] != "")]
-                mini = mini.drop_duplicates()
-                if not mini.empty:
-                    mini["Upload Date"] = now_iso
-                    mini["Source ID"] = source_id
-                    append_log_rows(mini.to_dict(orient="records"))
-
-                # 5) build FAISS index (blocking with spinner)
-                try:
-                    with st.spinner("Building embeddings & FAISS index…"):
-                        stats = build_from_json()
-                    msg = f"Saved {len(records)} rows. Repository now has {total} records. Index rebuilt with {stats['num_vectors']} vectors."
-                    st.session_state["flash_success"] = msg
-                    st.session_state.pop("faiss_index", None)   # ← force reload in Search
-                    st.session_state.pop("faiss_meta", None)
-
-                except Exception as e:
-                    import traceback
-                    st.error("Indexing failed:")
-                    st.code(traceback.format_exc(), language="python")
-                    # keep the saved-rows message
-                    st.session_state["flash_success"] = "Saved rows. Indexing failed — see error above."
-
-                # 6) clear controls on next render and rerun
-                st.session_state["clear_inputs"] = True
-                st.rerun()
+  st.markdown("---")
+  
+  # ----- Editable table + Submit #2 (SAVE) -----
+  if st.session_state.get("parsed_df") is not None:
+      st.markdown("#### Edit parsed table (you can modify any cell)")
+      edited = st.data_editor(
+          st.session_state["parsed_df"],
+          use_container_width=True,
+          num_rows="dynamic",
+          key="editor_parsed",
+      )
+      st.session_state["parsed_df"] = pd.DataFrame(edited)
+  
+      if st.button("Submit #2 — Confirm & Save to Repository", type="secondary"):
+          df_final = st.session_state["parsed_df"]
+          if df_final is None or df_final.empty:
+              st.warning("Nothing to save. Parse notes first.")
+          else:
+              # 1) convert to JSON records
+              records = df_to_records(df_final)
+              # 2) append to repository JSON
+              total = append_records(records)
+              # 3) save a snapshot (audit)
+              raw = st.session_state.get("raw_text", "")
+              snap = save_snapshot(raw) if raw else None
+  
+              # 4) log rows (Notes Type, Date, Upload Date, Source ID)
+              now_iso = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+              source_id = hashlib.sha256(raw.encode("utf-8", "ignore")).hexdigest()[:8] if raw else ""
+              mini = df_final[["Date", "Notes Type"]].copy()
+              mini = mini.astype(str).applymap(lambda s: s.strip())
+              mini = mini[(mini["Date"] != "") & (mini["Notes Type"] != "")]
+              mini = mini.drop_duplicates()
+              if not mini.empty:
+                  mini["Upload Date"] = now_iso
+                  mini["Source ID"] = source_id
+                  append_log_rows(mini.to_dict(orient="records"))
+  
+              # 5) build FAISS index (blocking with spinner)
+              try:
+                  with st.spinner("Building embeddings & FAISS index…"):
+                      stats = build_from_json()
+                  msg = f"Saved {len(records)} rows. Repository now has {total} records. Index rebuilt with {stats['num_vectors']} vectors."
+                  st.session_state["flash_success"] = msg
+                  st.session_state.pop("faiss_index", None)   # ← force reload in Search
+                  st.session_state.pop("faiss_meta", None)
+  
+              except Exception as e:
+                  import traceback
+                  st.error("Indexing failed:")
+                  st.code(traceback.format_exc(), language="python")
+                  # keep the saved-rows message
+                  st.session_state["flash_success"] = "Saved rows. Indexing failed — see error above."
+  
+              # 6) clear controls on next render and rerun
+              st.session_state["clear_inputs"] = True
+              st.rerun()
 
 # ====== Search helpers (ported from old app, adapted to repository/) ======
 ALWAYS_ENTITIES = {"cwt", "gbt", "sbt", "sbti", "gt", "eod", "bcg", "esg", "mck", "amex"}
